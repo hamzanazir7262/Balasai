@@ -1,22 +1,30 @@
 import React from 'react';
-import { Box, Typography, Link } from '@mui/material';
+import { Box, Typography, Link, Grid } from '@mui/material';
 import { Facebook, Twitter, Instagram, Map as MapIcon, Email as EmailIcon, Phone as PhoneIcon } from '@mui/icons-material';
 
 const Footer = () => {
   return (
-    <Box sx={{ padding: 2, backgroundColor: '#001C38', textAlign: 'center', color: "white" }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-around', marginBottom: 2 }}>
-        <Box sx={{width:"30%",textAlign:"left"}}>
+    <Box sx={{ padding: { xs: 2, sm: 4 }, backgroundColor: '#001C38', textAlign: 'center', color: 'white' }}>
+      <Grid container spacing={2} sx={{ marginBottom: 2 }}>
+        <Grid item xs={12} sm={6} md={4}>
           <Typography variant="h6">Balasai</Typography>
-          <Typography>Aspire Group of Colleges is a renowned institution offering a wide range of technical courses, providing students with the necessary skills and knowledge to excel in their desired field.</Typography>
-          <Box>
-            <Facebook sx={{ color: '#fff', marginRight: 3 }} />
-            <Twitter sx={{ color: '#ffff', marginRight: 3 }} />
-            <Instagram sx={{ color: '#ffff' }} />
+          <Typography variant="body2">
+            Aspire Group of Colleges is a renowned institution offering a wide range of technical courses, providing students with the necessary skills and knowledge to excel in their desired field.
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }}>
+            <Link href="#" sx={{ color: 'white', marginRight: 2 }}>
+              <Facebook />
+            </Link>
+            <Link href="#" sx={{ color: 'white', marginRight: 2 }}>
+              <Twitter />
+            </Link>
+            <Link href="#" sx={{ color: 'white' }}>
+              <Instagram />
+            </Link>
           </Box>
-        </Box>
-        <Box sx={{ width: '200px' }}>
-          <Typography variant="h6" sx={{paddingBottom:2}}>Contact Us</Typography>
+        </Grid>
+        <Grid item xs={12} sm={6} md={4}>
+          <Typography variant="h6" sx={{ paddingBottom: 2 }}>Contact Us</Typography>
           <Box
             sx={{
               border: '1px solid white',
@@ -32,9 +40,8 @@ const Footer = () => {
                 backgroundColor: 'white',
                 borderRadius: '50%',
                 padding: '4px',
-                border: '2px solid #8B4513', // Dark brown border
-                color: '#8B4513', // Dark brown color
-               
+                border: '2px solid #8B4513',
+                color: '#8B4513',
               },
             }}
           >
@@ -58,8 +65,8 @@ const Footer = () => {
                 backgroundColor: 'white',
                 borderRadius: '50%',
                 padding: '4px',
-                border: '2px solid #8B4513', // Dark brown border
-                color: '#8B4513', // Dark brown color
+                border: '2px solid #8B4513',
+                color: '#8B4513',
               },
             }}
           >
@@ -82,24 +89,22 @@ const Footer = () => {
                 backgroundColor: 'white',
                 borderRadius: '50%',
                 padding: '4px',
-                border: '2px solid #8B4513', // Dark brown border
-                color: '#8B4513', // Dark brown color
+                border: '2px solid #8B4513',
+                color: '#8B4513',
               },
             }}
           >
             <Box sx={{ position: 'relative', paddingTop: '24px' }}>
               <MapIcon />
-              aspire tower 4d pia colony 
-              vijayawada
+              aspire tower 4d pia colony vijayawada
             </Box>
           </Box>
-        </Box>
-        <Box>
+        </Grid>
+        <Grid item xs={12} md={4}>
           <Typography variant="h6">Our Location</Typography>
-          <Box>
-            {/* Include a map here */}
+          <Box sx={{ marginTop: 2 }}>
             <iframe
-             title="location"
+              title="location"
               width="100%"
               height="200"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.0794342448637!2d-74.00021408465168!3d40.71406307933121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a1b3a2c3ef1%3A0x407d0cc1a1d92e!2sStatue%20of%20Liberty!5e0!3m2!1sen!2sus!4v1623772184477!5m2!1sen!2sus"
@@ -107,12 +112,15 @@ const Footer = () => {
               allowFullScreen=""
               aria-hidden="false"
               tabIndex="0"
-            ></iframe>
+              style={{ border: 0, borderRadius: '8px' }}
+            />
           </Box>
-        </Box>
-      </Box>
-    
-      <Typography variant="body2">© {new Date().getFullYear()} All rights reserved.</Typography>
+        </Grid>
+      </Grid>
+
+      <Typography variant="body2" sx={{ marginTop: 3 }}>
+        © {new Date().getFullYear()} All rights reserved.
+      </Typography>
     </Box>
   );
 };

@@ -1,11 +1,15 @@
 import React from 'react';
-import {  Toolbar, Typography, Button, Box, List, ListItem, ListItemText } from '@mui/material';
+import { Drawer, IconButton, Toolbar, Typography, Button, Box, List, ListItem, ListItemText } from '@mui/material';
 import { Link } from 'react-router-dom';
-
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Navbar = () => {
+  const [openDrawer, setOpenDrawer] = React.useState(false);
   const [openSubmenu, setOpenSubmenu] = React.useState(null);
   const [activeItem, setActiveItem] = React.useState(null);
+
+  const handleDrawerOpen = () => setOpenDrawer(true);
+  const handleDrawerClose = () => setOpenDrawer(false);
 
   const handleSubmenuOpen = (menuItem) => setOpenSubmenu(menuItem);
   const handleSubmenuClose = () => setOpenSubmenu(null);
@@ -18,7 +22,7 @@ const Navbar = () => {
     backgroundColor: 'white',
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
     padding: '5px',
-    width:200,
+    width: 200,
     zIndex: 1,
   };
 
@@ -27,7 +31,7 @@ const Navbar = () => {
     position: 'absolute',
     top: '0',
     left: '90%',
-    width:200,
+    width: 200,
     backgroundColor: 'white',
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
     padding: '5px',
@@ -35,16 +39,18 @@ const Navbar = () => {
   };
 
   return (
-    <Box position="static" sx={{ backgroundColor: 'white', color: 'black', position: 'relative' }}>
+    <Box sx={{ flexGrow: 1 }}>
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1, color: 'black' }}>
           Balasai
         </Typography>
-        <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center', position: 'relative' }}>
+        <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen} sx={{ display: { xs: 'block', md: 'none' } }}>
+          <MenuIcon />
+        </IconButton>
+        <Box sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1, justifyContent: 'center', position: 'relative' }}>
           <Button component={Link} to="/" sx={{ color: 'black' }}>Home</Button>
           <Button component={Link} to="/placement" sx={{ color: 'black' }}>Placement</Button>
           <Button component={Link} to="/admission" sx={{ color: 'black' }}>Admission</Button>
-
           {/* Courses Button */}
           <Box
             onMouseEnter={() => handleSubmenuOpen('courses')}
@@ -54,80 +60,61 @@ const Navbar = () => {
             <Button sx={{ color: 'black' }}>Courses</Button>
             {openSubmenu === 'courses' && (
               <Box sx={{ ...subMenuStyles }}>
-
-  <List>
-    <ListItem
-      onMouseEnter={() => handleItemHover('science')}
-      onMouseLeave={handleItemLeave}
-      sx={{
-        position: 'relative',
-        '&:hover': {
-          backgroundColor: '#007BFF',
-        },
-      }}
-    >
-      <ListItemText    style={{ color: 'black', textDecoration: 'none' }}
-          onMouseEnter={(e) => (e.target.style.color = 'white')}
-          onMouseLeave={(e) => (e.target.style.color = 'black')}>
-       
-          Science and Computer
-        
-      </ListItemText>
-      {activeItem === 'science' && (
-        <Box sx={{ ...submenuListStyles }}>
-          <List>
-            <ListItem
-              sx={{
-                '&:hover': {
-                  backgroundColor: '#007BFF',
-                },
-              }}
-            >
-              <Link
-                to="/courses/science-computer/data-science"
-                style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
-              >
-                BSc. Data Science
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
+                <List>
+                  {/* Science and Computer */}
+                  <ListItem
+                    onMouseEnter={() => handleItemHover('science')}
+                    onMouseLeave={handleItemLeave}
+                    sx={{
+                      position: 'relative',
+                      '&:hover': {
+                        backgroundColor: '#007BFF',
+                      },
+                    }}
+                  >
+                    <ListItemText style={{ color: 'black' }}>Science and Computer</ListItemText>
+                    {activeItem === 'science' && (
+                      <Box sx={{ ...submenuListStyles }}>
+                        <List>
+                          <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
+                            <Link to="/courses/science-computer/data-science" style={{ color: 'black', textDecoration: 'none' }}>
+                              BSc. Data Science
+                            </Link>
+                          </ListItem>
+                          <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
               <Link
                 to="/courses/science-computer/software-engineering"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 BSc. Software Engineering
               </Link>
             </ListItem>
             <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
               <Link
-                to="/courses/science-computer/ai"
-                style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
-              >
-                BSc. Artificial Intelligence
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
                 to="/courses/science-computer/data-analytics"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
               >
                 BSc. Data Analytics
               </Link>
             </ListItem>
-          </List>
-        </Box>
-      )}
-    </ListItem>
-
-    <ListItem
+            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
+              <Link
+                to="/courses/science-computer/ai"
+                style={{ color: 'black', textDecoration: 'none' }}
+                
+                
+              >
+                BSc. Artificial Intelligence
+              </Link>
+            </ListItem>
+                        </List>
+                      </Box>
+                    )}
+                  </ListItem>
+                  <ListItem
       onMouseEnter={() => handleItemHover('life-science')}
       onMouseLeave={handleItemLeave}
       sx={{
@@ -138,8 +125,8 @@ const Navbar = () => {
       }}
     >
       <ListItemText    style={{ color: 'black', textDecoration: 'none' }}
-          onMouseEnter={(e) => (e.target.style.color = 'white')}
-          onMouseLeave={(e) => (e.target.style.color = 'black')}>
+          
+          >
       
           Life Science Course
       
@@ -151,8 +138,8 @@ const Navbar = () => {
               <Link
                 to="/courses/life-science/biology"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 Biology
               </Link>
@@ -161,8 +148,8 @@ const Navbar = () => {
               <Link
                 to="/courses/life-science/botany"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 Botany
               </Link>
@@ -171,8 +158,8 @@ const Navbar = () => {
               <Link
                 to="/courses/life-science/zoology"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 Zoology
               </Link>
@@ -181,8 +168,8 @@ const Navbar = () => {
               <Link
                 to="/courses/life-science/genetics"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 Genetics
               </Link>
@@ -191,7 +178,6 @@ const Navbar = () => {
         </Box>
       )}
     </ListItem>
-
     <ListItem
       onMouseEnter={() => handleItemHover('professional')}
       onMouseLeave={handleItemLeave}
@@ -203,8 +189,8 @@ const Navbar = () => {
       }}
     >
       <ListItemText  style={{ color: 'black', textDecoration: 'none' }}
-          onMouseEnter={(e) => (e.target.style.color = 'white')}
-          onMouseLeave={(e) => (e.target.style.color = 'black')}>
+          
+          >
                  Professional Course
           </ListItemText>
       {activeItem === 'professional' && (
@@ -214,8 +200,8 @@ const Navbar = () => {
               <Link
                 to="/courses/professional/business-management"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 Business Management
               </Link>
@@ -224,8 +210,8 @@ const Navbar = () => {
               <Link
                 to="/courses/professional/accounting"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 Accounting
               </Link>
@@ -234,8 +220,8 @@ const Navbar = () => {
               <Link
                 to="/courses/professional/marketing"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 Marketing
               </Link>
@@ -244,8 +230,8 @@ const Navbar = () => {
               <Link
                 to="/courses/professional/hr"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 Human Resources
               </Link>
@@ -254,7 +240,6 @@ const Navbar = () => {
         </Box>
       )}
     </ListItem>
-
     <ListItem
       onMouseEnter={() => handleItemHover('pg')}
       onMouseLeave={handleItemLeave}
@@ -266,8 +251,8 @@ const Navbar = () => {
       }}
     >
       <ListItemText style={{ color: 'black', textDecoration: 'none' }}
-          onMouseEnter={(e) => (e.target.style.color = 'white')}
-          onMouseLeave={(e) => (e.target.style.color = 'black')}>
+          
+          >
       
           PG Course
      
@@ -279,8 +264,8 @@ const Navbar = () => {
               <Link
                 to="/courses/pg/mba"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 MBA
               </Link>
@@ -289,8 +274,8 @@ const Navbar = () => {
               <Link
                 to="/courses/pg/mtech"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 MTech
               </Link>
@@ -299,8 +284,8 @@ const Navbar = () => {
               <Link
                 to="/courses/pg/msc"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 MSc
               </Link>
@@ -309,8 +294,8 @@ const Navbar = () => {
               <Link
                 to="/courses/pg/ma"
                 style={{ color: 'black', textDecoration: 'none' }}
-                onMouseEnter={(e) => (e.target.style.color = 'white')}
-                onMouseLeave={(e) => (e.target.style.color = 'black')}
+                
+                
               >
                 MA
               </Link>
@@ -319,16 +304,96 @@ const Navbar = () => {
         </Box>
       )}
     </ListItem>
-  </List>
-</Box>
-
-           
+                </List>
+              </Box>
             )}
           </Box>
-
           <Button component={Link} to="/contact-us" sx={{ color: 'black' }}>Contact Us</Button>
         </Box>
       </Toolbar>
+      <Drawer anchor="left" open={openDrawer} onClose={handleDrawerClose}>
+        <Box sx={{ width: 250, padding: 2 }}>
+          <List>
+            <ListItem button component={Link} to="/" onClick={handleDrawerClose}>
+              <ListItemText primary="Home" />
+            </ListItem>
+            <ListItem button component={Link} to="/placement" onClick={handleDrawerClose}>
+              <ListItemText primary="Placement" />
+            </ListItem>
+            <ListItem button component={Link} to="/admission" onClick={handleDrawerClose}>
+              <ListItemText primary="Admission" />
+            </ListItem>
+            <ListItem button onClick={handleSubmenuOpen.bind(null, 'courses')}>
+              <ListItemText primary="Courses" />
+            </ListItem>
+            {openSubmenu === 'courses' && (
+  <Box sx={{ ...subMenuStyles }}>
+    <List>
+      {/* Science and Computer */}
+      <ListItem button component={Link} to="/courses/science-computer/data-science" onClick={handleDrawerClose}>
+        <ListItemText primary="BSc. Data Science" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/science-computer/software-engineering" onClick={handleDrawerClose}>
+        <ListItemText primary="BSc. Software Engineering" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/science-computer/data-analytics" onClick={handleDrawerClose}>
+        <ListItemText primary="BSc. Data Analytics" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/science-computer/ai" onClick={handleDrawerClose}>
+        <ListItemText primary="BSc. Artificial Intelligence" />
+      </ListItem>
+
+      {/* Life Science */}
+      <ListItem button component={Link} to="/courses/life-science/biology" onClick={handleDrawerClose}>
+        <ListItemText primary="Biology" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/life-science/botany" onClick={handleDrawerClose}>
+        <ListItemText primary="Botany" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/life-science/zoology" onClick={handleDrawerClose}>
+        <ListItemText primary="Zoology" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/life-science/genetics" onClick={handleDrawerClose}>
+        <ListItemText primary="Genetics" />
+      </ListItem>
+
+      {/* Professional Course */}
+      <ListItem button component={Link} to="/courses/professional/business-management" onClick={handleDrawerClose}>
+        <ListItemText primary="Business Management" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/professional/accounting" onClick={handleDrawerClose}>
+        <ListItemText primary="Accounting" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/professional/marketing" onClick={handleDrawerClose}>
+        <ListItemText primary="Marketing" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/professional/hr" onClick={handleDrawerClose}>
+        <ListItemText primary="Human Resources" />
+      </ListItem>
+
+      {/* PG Course */}
+      <ListItem button component={Link} to="/courses/pg/mba" onClick={handleDrawerClose}>
+        <ListItemText primary="MBA" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/pg/mtech" onClick={handleDrawerClose}>
+        <ListItemText primary="MTech" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/pg/msc" onClick={handleDrawerClose}>
+        <ListItemText primary="MSc" />
+      </ListItem>
+      <ListItem button component={Link} to="/courses/pg/ma" onClick={handleDrawerClose}>
+        <ListItemText primary="MA" />
+      </ListItem>
+    </List>
+  </Box>
+)}
+
+            <ListItem button component={Link} to="/contact-us" onClick={handleDrawerClose}>
+              <ListItemText primary="Contact Us" />
+            </ListItem>
+          </List>
+        </Box>
+      </Drawer>
     </Box>
   );
 };

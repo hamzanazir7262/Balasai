@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Placement from './pages/Placement';
 import Admission from './pages/Admission';
-import Courses from './pages/Courses';
+import Karishna from './pages/Karishna';
 import Course from './pages/Course';
 import ContactUs from './pages/ContactUs';
 
@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/placement" element={<Placement />} />
         <Route path="/admission" element={<Admission />} />
         <Route path="/courses/:category/:courseType" element={<Course />} />
-        <Route path="/courses/*" element={<Courses />} />
+        <Route path="/karishna" element={<Karishna />} />
         <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
       <Footer />

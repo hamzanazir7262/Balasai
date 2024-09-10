@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography, Grid, IconButton } from '@mui/material';
+import { Link  } from 'react-router-dom';
 import { Star as StarIcon, ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
 const Home = () => {
   return (
@@ -120,7 +121,7 @@ const Home = () => {
       <Box
   sx={{
     width: '100%',
-    height: '400px', // Adjust height as needed
+    height: 'auto', // Adjust height as needed
     backgroundImage: 'url(/Aspire-Aug1-1400x1050.jpg)', // Update with the path to your image
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -152,6 +153,7 @@ const Home = () => {
     sx={{
       mb: 2,
       zIndex: 2,
+      paddingTop:3,
       position: 'relative',
     }}
   >
@@ -238,10 +240,10 @@ const Home = () => {
           }}
         >
           <Typography variant="h2" component="h3">
-            15<span style={{color:"#DFAD3E"}}>+</span> years
+            15<span style={{color:"#DFAD3E"}}>+</span>
           </Typography>
           <Typography variant="body1">
-            Experience
+          years
           </Typography>
         </Box>
       </Grid>
@@ -308,6 +310,7 @@ const Home = () => {
                   <StarIcon key={index} sx={{ color: 'gold', fontSize: '1.5rem' }} />
                 ))}
               </Box>
+              <Link to="/karishna" style={{ textDecoration: 'none' }}>
              <Box sx={{display:"flex", alignItems:"center", justifyContent:"center", textAlign:"center"}}>
              <IconButton>
                 <ArrowForwardIcon />
@@ -316,12 +319,79 @@ const Home = () => {
                 Harikrishna
               </Typography>
              </Box>
-            
+            </Link>
             </Box>
           </Grid>
         </Grid>
       </Box>
      
+      {/* Placement Partners Section */}
+      <Box
+        sx={{
+          width: '100%',
+          textAlign: 'center',
+          my: 9, // Margin top and bottom
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            position: 'relative',
+            mb: 4, // Margin bottom for spacing
+          }}
+        >
+          <Box
+            sx={{
+              width: '100%',
+              height: '2px',
+              backgroundColor: 'grey',
+              position: 'absolute',
+              top: '50%',
+              left: 0,
+              zIndex: 1,
+            }}
+          />
+          <Typography
+            variant="h4"
+            component="h2"
+            sx={{
+              backgroundColor: 'white',
+              padding: '0 20px',
+              zIndex: 2, // Ensure the text stays above the line
+              color: '#333',
+            }}
+          >
+            Placement Partners
+          </Typography>
+        </Box>
+
+        {/* Images in one row */}
+        <Grid container spacing={2} justifyContent="center">
+          {['/t_500x300.jpeg', '/th (1).jpeg', '/t_500x300 (1).jpeg', '/t_500x300 (2).jpeg'].map((image, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index}>
+              <Box
+                sx={{
+                  textAlign: 'center',
+                }}
+              >
+                <img
+                  src={image}
+                  alt={`Placement Partner ${index + 1}`}
+                  style={{
+                    maxWidth: '150px', // Adjust max width to fit your design
+                    width: '100%',
+                    height: 'auto',
+                    objectFit: 'contain',
+                  }}
+                />
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </>
   );
 };
