@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Link, Grid } from '@mui/material';
+import { Box, Typography, Link, Grid} from '@mui/material';
 import { Facebook, Twitter, Instagram, Map as MapIcon, Email as EmailIcon, Phone as PhoneIcon } from '@mui/icons-material';
 
 const Footer = () => {
@@ -117,7 +117,28 @@ const Footer = () => {
           </Box>
         </Grid>
       </Grid>
-
+      <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '100%',
+            position: 'relative',
+             // Margin bottom for spacing
+          }}
+        >
+          <Box
+            sx={{
+              width: '100%',
+              height: '2px',
+              backgroundColor: 'grey',
+              position: 'absolute',
+              top: '50%',
+              left: 0,
+             
+            }}
+          />
+        </Box>
       <Typography variant="body2" sx={{ marginTop: 3 }}>
         © {new Date().getFullYear()} All rights reserved.
       </Typography>

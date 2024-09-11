@@ -8,6 +8,7 @@ import Admission from './pages/Admission';
 import Karishna from './pages/Karishna';
 import Course from './pages/Course';
 import ContactUs from './pages/ContactUs';
+import Page404 from './pages/Page404';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/courses/:category/:courseType" element={<Course />} />
         <Route path="/karishna" element={<Karishna />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="*" element={<Page404/>} />
       </Routes>
       <Footer />
     </Router>

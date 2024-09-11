@@ -314,16 +314,16 @@ const Navbar = () => {
       <Drawer anchor="left" open={openDrawer} onClose={handleDrawerClose}>
         <Box sx={{ width: 250, padding: 2 }}>
           <List>
-            <ListItem button component={Link} to="/" onClick={handleDrawerClose}>
+            <ListItem button component={Link} to="/" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
               <ListItemText primary="Home" />
             </ListItem>
-            <ListItem button component={Link} to="/placement" onClick={handleDrawerClose}>
+            <ListItem button component={Link} to="/placement" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
               <ListItemText primary="Placement" />
             </ListItem>
-            <ListItem button component={Link} to="/admission" onClick={handleDrawerClose}>
+            <ListItem button component={Link} to="/admission" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
               <ListItemText primary="Admission" />
             </ListItem>
-            <ListItem button onClick={handleSubmenuOpen.bind(null, 'courses')}>
+            <ListItem button onClick={handleSubmenuOpen.bind(null, 'courses')}  sx={{ color: 'black' }}>
               <ListItemText primary="Courses" />
             </ListItem>
             {openSubmenu === 'courses' && (
@@ -388,7 +388,7 @@ const Navbar = () => {
   </Box>
 )}
 
-            <ListItem button component={Link} to="/contact-us" onClick={handleDrawerClose}>
+            <ListItem button component={Link} to="/contact-us" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
               <ListItemText primary="Contact Us" />
             </ListItem>
           </List>
