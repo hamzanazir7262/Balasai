@@ -283,16 +283,16 @@ const Navbar = () => {
       <Drawer anchor="left" open={openDrawer} onClose={handleDrawerClose}>
         <Box sx={{ width: 250, padding: 2 }}>
           <List>
-            <ListItem button component={Link} to="/" onClick={handleDrawerClose}  sx={{ color: 'white' }}>
+            <ListItem button component={Link} to="/" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
               <ListItemText primary="Home" />
             </ListItem>
-            <ListItem button component={Link} to="/placement" onClick={handleDrawerClose}  sx={{ color: 'white' }}>
+            <ListItem button component={Link} to="/placement" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
               <ListItemText primary="Placement" />
             </ListItem>
-            <ListItem button component={Link} to="/admission" onClick={handleDrawerClose}  sx={{ color: 'white' }}>
+            <ListItem button component={Link} to="/admission" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
               <ListItemText primary="Admission" />
             </ListItem>
-            <ListItem button onClick={handleSubmenuOpen.bind(null, 'courses')}  sx={{ color: 'white' }}>
+            <ListItem button onClick={handleSubmenuOpen.bind(null, 'courses')}  sx={{ color: 'black' }}>
               <ListItemText primary="Courses" />
             </ListItem>
             {openSubmenu === 'courses' && (
@@ -300,64 +300,64 @@ const Navbar = () => {
     <List>
       {/* Science and Computer */}
       <ListItem button component={Link} to="/courses/science-computer/data-science" onClick={handleDrawerClose}>
-        <ListItemText primary="BSc. Data Science" />
+        <ListItemText primary="BSc. Data Science"  sx={{ color: 'black' }}/>
       </ListItem>
       <ListItem button component={Link} to="/courses/science-computer/software-engineering" onClick={handleDrawerClose}>
-        <ListItemText primary="BSc. Software Engineering" />
+        <ListItemText primary="BSc. Software Engineering" sx={{ color: 'black' }} />
       </ListItem>
       <ListItem button component={Link} to="/courses/science-computer/data-analytics" onClick={handleDrawerClose}>
-        <ListItemText primary="BSc. Data Analytics" />
+        <ListItemText primary="BSc. Data Analytics" sx={{ color: 'black' }} />
       </ListItem>
       <ListItem button component={Link} to="/courses/science-computer/ai" onClick={handleDrawerClose}>
-        <ListItemText primary="BSc. Artificial Intelligence" />
+        <ListItemText primary="BSc. Artificial Intelligence"  sx={{ color: 'black' }}/>
       </ListItem>
 
       {/* Life Science */}
       <ListItem button component={Link} to="/courses/life-science/biology" onClick={handleDrawerClose}>
-        <ListItemText primary="Biology" />
+        <ListItemText primary="Biology" sx={{ color: 'black' }} />
       </ListItem>
       <ListItem button component={Link} to="/courses/life-science/botany" onClick={handleDrawerClose}>
-        <ListItemText primary="Botany" />
+        <ListItemText primary="Botany" sx={{ color: 'black' }}/>
       </ListItem>
       <ListItem button component={Link} to="/courses/life-science/zoology" onClick={handleDrawerClose}>
-        <ListItemText primary="Zoology" />
+        <ListItemText primary="Zoology" sx={{ color: 'black' }}/>
       </ListItem>
       <ListItem button component={Link} to="/courses/life-science/genetics" onClick={handleDrawerClose}>
-        <ListItemText primary="Genetics" />
+        <ListItemText primary="Genetics" sx={{ color: 'black' }} />
       </ListItem>
 
       {/* Professional Course */}
       <ListItem button component={Link} to="/courses/professional/business-management" onClick={handleDrawerClose}>
-        <ListItemText primary="Business Management" />
+        <ListItemText primary="Business Management" sx={{ color: 'black' }} />
       </ListItem>
       <ListItem button component={Link} to="/courses/professional/accounting" onClick={handleDrawerClose}>
-        <ListItemText primary="Accounting" />
+        <ListItemText primary="Accounting" sx={{ color: 'black' }}/>
       </ListItem>
       <ListItem button component={Link} to="/courses/professional/marketing" onClick={handleDrawerClose}>
-        <ListItemText primary="Marketing" />
+        <ListItemText primary="Marketing" sx={{ color: 'black' }}/>
       </ListItem>
       <ListItem button component={Link} to="/courses/professional/hr" onClick={handleDrawerClose}>
-        <ListItemText primary="Human Resources" />
+        <ListItemText primary="Human Resources" sx={{ color: 'black' }} />
       </ListItem>
 
       {/* PG Course */}
       <ListItem button component={Link} to="/courses/pg/mba" onClick={handleDrawerClose}>
-        <ListItemText primary="MBA" />
+        <ListItemText primary="MBA" sx={{ color: 'black' }}/>
       </ListItem>
       <ListItem button component={Link} to="/courses/pg/mtech" onClick={handleDrawerClose}>
-        <ListItemText primary="MTech" />
+        <ListItemText primary="MTech" sx={{ color: 'black' }}/>
       </ListItem>
       <ListItem button component={Link} to="/courses/pg/msc" onClick={handleDrawerClose}>
-        <ListItemText primary="MSc" />
+        <ListItemText primary="MSc" sx={{ color: 'black' }}/>
       </ListItem>
       <ListItem button component={Link} to="/courses/pg/ma" onClick={handleDrawerClose}>
-        <ListItemText primary="MA" />
+        <ListItemText primary="MA" sx={{ color: 'black' }}/>
       </ListItem>
     </List>
   </Box>
 )}
 
-            <ListItem button component={Link} to="/contact-us" onClick={handleDrawerClose}  sx={{ color: 'white' }}>
+            <ListItem button component={Link} to="/contact-us" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
               <ListItemText primary="Contact Us" />
             </ListItem>
           </List>
