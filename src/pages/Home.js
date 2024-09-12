@@ -1,7 +1,7 @@
 import React from 'react';
-import { Box, Typography, Grid, IconButton } from '@mui/material';
-import { Link  } from 'react-router-dom';
-import { Star as StarIcon, ArrowForward as ArrowForwardIcon } from '@mui/icons-material';
+import { Box, Typography, Grid } from '@mui/material';
+
+import { Star as StarIcon } from '@mui/icons-material';
 const Home = () => {
   return (
     <>
@@ -9,7 +9,7 @@ const Home = () => {
         sx={{
           width: '100%',
           height: '400px', // Adjust height as needed
-          backgroundImage: 'url(/indian-university-students-DDGBAJ.jpg)', // Update with the path to your image
+          backgroundImage: 'url(/Blog-banner-image_001.jpg)', // Update with the path to your image
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           display: 'flex',
@@ -251,79 +251,112 @@ const Home = () => {
   </Box>
 </Box>
 
-<Box
+<Box sx={{ padding: '20px 40px', mb: 2 }}>
+  <Typography variant="h6" component="h2" sx={{paddingLeft:2, mb: 1 }}>
+    Testimonials
+  </Typography>
+  <Box sx={{ margin: 2, border: '0.1px solid lightgrey',paddingRight:5 ,paddingBottom:5}}>
+    <Grid container>
+      {/* First Grid: Text Column */}
+      <Grid
+        item
+        xs={12}
+        md={6}
         sx={{
-          padding: '40px 20px',
-          mb: 4
+          backgroundColor: '#001C38',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100%',
+          borderEndEndRadius: 40,
         }}
       >
-        <Grid container spacing={4}>
-          {/* Text Column */}
-          <Grid item xs={12} md={6}>
-            <Box
-              sx={{
-                padding: '15px',
-              
-                
-              }}
-            >
-              <Typography variant="h6" component="h2" sx={{ mb: 3 }}>
-                Testonomals
-              </Typography>
-              <Typography variant="h3" component="h2" sx={{ mb: 3 ,  textAlign: 'center',}}>
-                What People Say About the College
-              </Typography>
-            </Box>
-          </Grid>
+        <Box sx={{ padding: '100px' }}>
+          <Typography
+            variant="h3"
+            component="h2"
+            sx={{ mb: 2, textAlign: 'center', color: 'white' }}
+          >
+            What People Say About the College
+          </Typography>
+        </Box>
+      </Grid>
 
-          {/* Image and Stars Column */}
-          <Grid item xs={12} md={6}>
-            <Box
-              sx={{
-                padding: '20px',
-                textAlign: 'center',
-                display:"flex",
-                flexDirection:"column",
-                alignItems:"center"
-              }}
-            >
-              <Box
-                sx={{
-                  width: '120px',
-                  height: '120px',
-                  borderRadius: '50%',
-                  overflow: 'hidden',
-                  margin: '0 auto',
-                  mb: 2,
+      {/* Second Grid: Image and Stars Column */}
+      <Grid item xs={12} md={6}>
+        <Box
+          sx={{
+            padding: '50px',
+            textAlign: 'center',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Typography variant="h6" textAlign="left" width="70%">
+            “Strong curriculum, well-structured programs, and up-to-date study materials”
+          </Typography>
+          <Box sx={{ mb: 2 }}>
+            {[...Array(5)].map((_, index) => (
+              <StarIcon key={index} sx={{ color: 'gold', fontSize: '1.5rem' }} />
+            ))}
+          </Box>
+
+          {/* Responsive Image Container */}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '20px',
+              mt: 4,
+              width: '100%',
+              flexWrap: 'wrap', // Make the images wrap to the next line on smaller screens
+              '& img': {
+                transition: 'filter 0.3s ease',
+                width: '20%', // Set a responsive width
+                height: 'auto', // Maintain aspect ratio
+                borderRadius: '50%',
+                objectFit: 'cover',
+                filter: 'blur(2px)', // Default blur for all images
+              },
+              '& img:nth-of-type(3)': {
+                filter: 'none', // No blur for the third image initially
+              },
+              '&:hover img': {
+                filter: 'blur(5px)', // Apply blur to all on hover
+              },
+              '& img:hover': {
+                filter: 'none', // Remove blur for hovered image
+              },
+              '@media (max-width: 600px)': {
+                '& img': {
+                  width: '40%', // Larger width for smaller screens
+                },
+              },
+            }}
+          >
+            {/* Profile Images */}
+            {[...Array(5)].map((_, index) => (
+              <img
+                key={index}
+                src="/th.jpeg" // Replace with correct image paths
+                alt={`Profile ${index + 1}`}
+                style={{
+                  maxWidth: '80px', // Adjust max width to fit your design
+                  width: '100%',
+                  height: 'auto',
+                  objectFit: 'contain',
                 }}
-              >
-                <img
-                  src="/th.jpeg" // Update with the path to your image
-                  alt="Profile"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </Box>
-              <Typography variant="h6" textAlign="left" width="70%">“Strong curriculum, well-structured programs,
-              and up-to-date study materials” </Typography>
-              <Box sx={{ mb: 2 }}>
-                {[...Array(5)].map((_, index) => (
-                  <StarIcon key={index} sx={{ color: 'gold', fontSize: '1.5rem' }} />
-                ))}
-              </Box>
-              <Link to="/karishna" style={{ textDecoration: 'none' }}>
-             <Box sx={{display:"flex", alignItems:"center", justifyContent:"center", textAlign:"center"}}>
-             <IconButton>
-                <ArrowForwardIcon />
-              </IconButton>
-              <Typography variant="body1" component="p" sx={{ textAlign:"center" }}>
-                Harikrishna
-              </Typography>
-             </Box>
-            </Link>
-            </Box>
-          </Grid>
-        </Grid>
-      </Box>
+              />
+            ))}
+          </Box>
+        </Box>
+      </Grid>
+    </Grid>
+  </Box>
+</Box>
+
+
      
       {/* Placement Partners Section */}
       <Box

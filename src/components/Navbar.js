@@ -2,7 +2,7 @@ import React from 'react';
 import { Drawer, IconButton, Toolbar, Typography, Button, Box, List, ListItem, ListItemText } from '@mui/material';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const Navbar = () => {
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [openSubmenu, setOpenSubmenu] = React.useState(null);
@@ -19,11 +19,11 @@ const Navbar = () => {
 
   const subMenuStyles = {
     position: 'absolute',
-    backgroundColor: 'white',
+    backgroundColor: '#B40808',
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
     padding: '5px',
     width: 200,
-    zIndex: 1,
+    zIndex: 3,
   };
 
   const submenuListStyles = {
@@ -32,298 +32,267 @@ const Navbar = () => {
     top: '0',
     left: '90%',
     width: 200,
-    backgroundColor: 'white',
+    backgroundColor: '#B40808',
     boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
     padding: '5px',
     zIndex: 2,
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1 , backgroundColor:"#B40808"  }}>
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1, color: 'black' }}>
+        <Typography variant="h6" sx={{ flexGrow: 1, color: 'white' }}>
           Balasai
         </Typography>
         <IconButton edge="start" color="inherit" aria-label="menu" onClick={handleDrawerOpen} sx={{ display: { xs: 'block', md: 'none' } }}>
           <MenuIcon />
         </IconButton>
         <Box sx={{ display: { xs: 'none', md: 'flex' }, flexGrow: 1, justifyContent: 'center', position: 'relative' }}>
-          <Button component={Link} to="/" sx={{ color: 'black' }}>Home</Button>
-          <Button component={Link} to="/placement" sx={{ color: 'black' }}>Placement</Button>
-          <Button component={Link} to="/admission" sx={{ color: 'black' }}>Admission</Button>
+          <Button component={Link} to="/" sx={{ color: 'white' }}>Home</Button>
+          <Button component={Link} to="/placement" sx={{ color: 'white' }}>Placement</Button>
+          <Button component={Link} to="/admission" sx={{ color: 'white' }}>Admission</Button>
           {/* Courses Button */}
           <Box
             onMouseEnter={() => handleSubmenuOpen('courses')}
             onMouseLeave={handleSubmenuClose}
             sx={{ position: 'relative' }}
           >
-            <Button sx={{ color: 'black' }}>Courses</Button>
+            <Button sx={{ color: 'white' }}>Courses <ExpandMoreIcon /></Button>
             {openSubmenu === 'courses' && (
-              <Box sx={{ ...subMenuStyles }}>
-                <List>
-                  {/* Science and Computer */}
-                  <ListItem
-                    onMouseEnter={() => handleItemHover('science')}
-                    onMouseLeave={handleItemLeave}
-                    sx={{
-                      position: 'relative',
-                      '&:hover': {
-                        backgroundColor: '#007BFF',
-                      },
-                    }}
-                  >
-                    <ListItemText style={{ color: 'black' }}>Science and Computer</ListItemText>
-                    {activeItem === 'science' && (
-                      <Box sx={{ ...submenuListStyles }}>
-                        <List>
-                          <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-                            <Link to="/courses/science-computer/data-science" style={{ color: 'black', textDecoration: 'none' }}>
-                              BSc. Data Science
-                            </Link>
-                          </ListItem>
-                          <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/science-computer/software-engineering"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                BSc. Software Engineering
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/science-computer/data-analytics"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-              >
-                BSc. Data Analytics
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/science-computer/ai"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                BSc. Artificial Intelligence
-              </Link>
-            </ListItem>
-                        </List>
-                      </Box>
-                    )}
-                  </ListItem>
-                  <ListItem
-      onMouseEnter={() => handleItemHover('life-science')}
-      onMouseLeave={handleItemLeave}
-      sx={{
-        position: 'relative',
-        '&:hover': {
-          backgroundColor: '#007BFF',
-        },
-      }}
-    >
-      <ListItemText    style={{ color: 'black', textDecoration: 'none' }}
-          
-          >
-      
-          Life Science Course
-      
-      </ListItemText>
-      {activeItem === 'life-science' && (
-        <Box sx={{ ...submenuListStyles }}>
-          <List>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/life-science/biology"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                Biology
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/life-science/botany"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                Botany
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/life-science/zoology"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                Zoology
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/life-science/genetics"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                Genetics
-              </Link>
-            </ListItem>
-          </List>
-        </Box>
-      )}
-    </ListItem>
-    <ListItem
-      onMouseEnter={() => handleItemHover('professional')}
-      onMouseLeave={handleItemLeave}
-      sx={{
-        position: 'relative',
-        '&:hover': {
-          backgroundColor: '#007BFF',
-        },
-      }}
-    >
-      <ListItemText  style={{ color: 'black', textDecoration: 'none' }}
-          
-          >
-                 Professional Course
-          </ListItemText>
-      {activeItem === 'professional' && (
-        <Box sx={{ ...submenuListStyles }}>
-          <List>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/professional/business-management"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                Business Management
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/professional/accounting"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                Accounting
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/professional/marketing"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                Marketing
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/professional/hr"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                Human Resources
-              </Link>
-            </ListItem>
-          </List>
-        </Box>
-      )}
-    </ListItem>
-    <ListItem
-      onMouseEnter={() => handleItemHover('pg')}
-      onMouseLeave={handleItemLeave}
-      sx={{
-        position: 'relative',
-        '&:hover': {
-          backgroundColor: '#007BFF',
-        },
-      }}
-    >
-      <ListItemText style={{ color: 'black', textDecoration: 'none' }}
-          
-          >
-      
-          PG Course
-     
-      </ListItemText>
-      {activeItem === 'pg' && (
-        <Box sx={{ ...submenuListStyles }}>
-          <List>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/pg/mba"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                MBA
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/pg/mtech"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                MTech
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/pg/msc"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                MSc
-              </Link>
-            </ListItem>
-            <ListItem sx={{ '&:hover': { backgroundColor: '#007BFF' } }}>
-              <Link
-                to="/courses/pg/ma"
-                style={{ color: 'black', textDecoration: 'none' }}
-                
-                
-              >
-                MA
-              </Link>
-            </ListItem>
-          </List>
-        </Box>
-      )}
-    </ListItem>
-                </List>
-              </Box>
-            )}
+  <Box sx={{ ...subMenuStyles }}>
+    <List>
+      {/* Science and Computer */}
+      <ListItem
+        onMouseEnter={() => handleItemHover('science')}
+        onMouseLeave={handleItemLeave}
+        sx={{
+          position: 'relative',
+          '&:hover': {
+            backgroundColor: 'white',
+            color: 'black',
+          },
+        }}
+      >
+        <ListItemText style={{ color: 'black' }}>Science and Computer</ListItemText>
+        {activeItem === 'science' && (
+          <Box sx={{ ...submenuListStyles }}>
+            <List>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/science-computer/data-science"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  BSc. Data Science
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/science-computer/software-engineering"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  BSc. Software Engineering
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/science-computer/data-analytics"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  BSc. Data Analytics
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/science-computer/ai"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  BSc. Artificial Intelligence
+                </Link>
+              </ListItem>
+            </List>
           </Box>
-          <Button component={Link} to="/contact-us" sx={{ color: 'black' }}>Contact Us</Button>
+        )}
+      </ListItem>
+
+      {/* Life Science */}
+      <ListItem
+        onMouseEnter={() => handleItemHover('life-science')}
+        onMouseLeave={handleItemLeave}
+        sx={{
+          position: 'relative',
+          '&:hover': {
+            backgroundColor: 'white',
+            color: 'black',
+          },
+        }}
+      >
+        <ListItemText style={{ color: 'black' }}>Life Science Course</ListItemText>
+        {activeItem === 'life-science' && (
+          <Box sx={{ ...submenuListStyles }}>
+            <List>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/life-science/biology"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  Biology
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/life-science/botany"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  Botany
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/life-science/zoology"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  Zoology
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/life-science/genetics"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  Genetics
+                </Link>
+              </ListItem>
+            </List>
+          </Box>
+        )}
+      </ListItem>
+
+      {/* Professional */}
+      <ListItem
+        onMouseEnter={() => handleItemHover('professional')}
+        onMouseLeave={handleItemLeave}
+        sx={{
+          position: 'relative',
+          '&:hover': {
+            backgroundColor: 'white',
+            color: 'black',
+          },
+        }}
+      >
+        <ListItemText style={{ color: 'black' }}>Professional Course</ListItemText>
+        {activeItem === 'professional' && (
+          <Box sx={{ ...submenuListStyles }}>
+            <List>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/professional/business-management"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  Business Management
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/professional/accounting"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  Accounting
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/professional/marketing"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  Marketing
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/professional/hr"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  Human Resources
+                </Link>
+              </ListItem>
+            </List>
+          </Box>
+        )}
+      </ListItem>
+
+      {/* PG Courses */}
+      <ListItem
+        onMouseEnter={() => handleItemHover('pg')}
+        onMouseLeave={handleItemLeave}
+        sx={{
+          position: 'relative',
+          '&:hover': {
+            backgroundColor: 'white',
+            color: 'black',
+          },
+        }}
+      >
+        <ListItemText style={{ color: 'black' }}>PG Course</ListItemText>
+        {activeItem === 'pg' && (
+          <Box sx={{ ...submenuListStyles }}>
+            <List>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/pg/mba"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  MBA
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/pg/mtech"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  MTech
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/pg/msc"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  MSc
+                </Link>
+              </ListItem>
+              <ListItem sx={{ '&:hover': { backgroundColor: 'white', color: 'black' } }}>
+                <Link
+                  to="/courses/pg/ma"
+                  style={{ color: 'black', textDecoration: 'none' }}
+                >
+                  MA
+                </Link>
+              </ListItem>
+            </List>
+          </Box>
+        )}
+      </ListItem>
+    </List>
+  </Box>
+)}
+
+          </Box>
+          <Button component={Link} to="/contact-us" sx={{ color: 'white' }}>Contact Us</Button>
         </Box>
       </Toolbar>
       <Drawer anchor="left" open={openDrawer} onClose={handleDrawerClose}>
         <Box sx={{ width: 250, padding: 2 }}>
           <List>
-            <ListItem button component={Link} to="/" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
+            <ListItem button component={Link} to="/" onClick={handleDrawerClose}  sx={{ color: 'white' }}>
               <ListItemText primary="Home" />
             </ListItem>
-            <ListItem button component={Link} to="/placement" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
+            <ListItem button component={Link} to="/placement" onClick={handleDrawerClose}  sx={{ color: 'white' }}>
               <ListItemText primary="Placement" />
             </ListItem>
-            <ListItem button component={Link} to="/admission" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
+            <ListItem button component={Link} to="/admission" onClick={handleDrawerClose}  sx={{ color: 'white' }}>
               <ListItemText primary="Admission" />
             </ListItem>
-            <ListItem button onClick={handleSubmenuOpen.bind(null, 'courses')}  sx={{ color: 'black' }}>
+            <ListItem button onClick={handleSubmenuOpen.bind(null, 'courses')}  sx={{ color: 'white' }}>
               <ListItemText primary="Courses" />
             </ListItem>
             {openSubmenu === 'courses' && (
@@ -388,7 +357,7 @@ const Navbar = () => {
   </Box>
 )}
 
-            <ListItem button component={Link} to="/contact-us" onClick={handleDrawerClose}  sx={{ color: 'black' }}>
+            <ListItem button component={Link} to="/contact-us" onClick={handleDrawerClose}  sx={{ color: 'white' }}>
               <ListItemText primary="Contact Us" />
             </ListItem>
           </List>
